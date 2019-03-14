@@ -28,6 +28,15 @@ class TaskRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findDeleted()
+    {
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.priority', 'DESC')
+            ->andWhere('t.deletedAt IS NOT NULL')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Task[] Returns an array of Task objects
     //  */
