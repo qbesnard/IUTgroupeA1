@@ -43,6 +43,11 @@ class Task
     private $estimated;
 
     /**
+     * @Orm\Column(type="integer", nullable=true)
+     */
+    private $priority;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -155,6 +160,18 @@ class Task
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getPriority(): ?int
+    {
+        return $this->priority;
+    }
+
+    public function setPriority(?int $priority): self
+    {
+        $this->priority = $priority;
 
         return $this;
     }
