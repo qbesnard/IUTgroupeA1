@@ -3,19 +3,17 @@
 {% block title %}Task index{% endblock %}
 
 {% block body %}
-    <h1>Task index</h1>
+    <h1>Backlog</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Description</th>
-                <th>Priority</th>
+                <th>Priorité</th>
                 <th>Type</th>
-                <th>Estimated</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
+                <th>Temps éstimé</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -31,17 +29,17 @@
                 <td>{{ task.createdAt ? task.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ task.updatedAt ? task.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('task_show', {'id': task.id}) }}">show</a>
-                    <a href="{{ path('task_edit', {'id': task.id}) }}">edit</a>
+                    <a href="{{ path('task_show', {'id': task.id}) }}">détail</a>
+                    <a href="{{ path('task_edit', {'id': task.id}) }}">éditer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="9">no records found</td>
+                <td colspan="9">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('task_new') }}">Create new</a>
+    <a href="{{ path('task_new') }}">Créer une tâche</a>
 {% endblock %}

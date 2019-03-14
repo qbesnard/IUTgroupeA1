@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('task_soft_delete', {'id': task.id}) }}" onsubmit="return confirm('Voulez-vous {{ task.deletedAt is null ? 'archiver' : 'restorer' }} cette tâche ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('soft-delete' ~ task.id) }}">
+    <button class="btn btn-danger">{{ task.deletedAt is null ? 'Archiver' : 'Restorer' }}</button>
+</form>
